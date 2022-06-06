@@ -24,11 +24,11 @@ function submitForm(e) {
 const step = Number(input2.value)
 const amount = Number(input3.value)
   e.preventDefault();
-  for (let i = 1; i <= amount; i += 1){
+  for (let i = 0; i < amount; i += 1){
       let realDel = delay + step * i;
-     
+     let position = i+1
  
-  createPromise(i, realDel)
+  createPromise(position, realDel)
   .then(({ position, delay }) => {
     Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -37,6 +37,7 @@ const amount = Number(input3.value)
     Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
   });
+    // delay + step;
     }
 }
 form.addEventListener('submit', submitForm )
